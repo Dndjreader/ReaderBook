@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+{% block main %}
+    <form action="/search" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="book" name="book" placeholder="Search" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="text-start">Title</th>
+                    <th class="text-end">Author</th>
+                    <th>Image</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {% for book in len %}
+                <tr>
+                    <td class="text-start align-middle">{{ title[book] }}</td>
+                    <td class="text-end align-middle">{{ author[book] }}</td>
+                    <td class="align-middle" ><img src="{{ img[book] }}" onerror="this.onerror=null; this.src='/static/No-Image-Placeholder.png'"></td>
+                    <td>
+                        <form action="/addbooks" method="post">
+                            <input type="hidden" name="value" value="{{ isbn[book ]}}">
+                            <button class="btn btn-primary btn-sm mb-2" name="addBook" type="submit">Add to Books</button>
+                        </form>
+                        <form action="/addwishlist" method="post">
+                            <input type="hidden" name="value" value="{{ isbn[book ]}}">
+                            <button class="btn btn-primary btn-sm" name="addwishlist" type="submit">Add to Wishlist</button>
+                        </form>
+                    </td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

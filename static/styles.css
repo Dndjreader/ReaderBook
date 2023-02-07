@@ -1,0 +1,39 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Nav Background */
+.bg-gray
+{
+    background-color: #c6c6c6;
+}
+
+/* Nav Image Size */
+
+nav img
+{
+    max-width: 2rem;
+    aspect-ratio: 1 / 1;
+}
+
+/* Colors for brand */
+nav .navbar-brand .orange
+{
+    color: #fd7e14;
+}
+nav .navbar-brand .purple
+{
+    color: #6f42c1;
+}
+/* Button Color */
+.btn
+{
+    background-color: orange;
+}
+
+img {
+    max-height:60px;
+    aspect-ratio: 1 / 1;
+}

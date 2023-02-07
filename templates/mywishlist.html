@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My Wishlist
+{% endblock %}
+
+{% block main %}
+    <h2>My Wishlist</h2>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="text-start">Title</th>
+                    <th class="text-end">Author</th>
+                    <th>Image</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider align-middle">
+                {% for book in len %}
+                <tr>
+                    <td class="text-start">{{ title[book] }}</td>
+                    <td class="text-end">{{ author[book] }}</td>
+                    <td ><img src="{{ img[book] }}" onerror="this.onerror=null; this.src='/static/No-Image-Placeholder.png'"></td>
+                    <td>
+                        <form action="/addbooks" method="post">
+                            <input type="hidden" name="value" value="{{ isbn[book] }}">
+                            <button class="btn btn-primary btn-sm mb-2" name="addBook" type="submit">Add to Books</button>
+                        </form>
+                        <form action="/removewishlist" method="post">
+                            <input type="hidden" name="value" value="{{ isbn[book] }}">
+                            <button class="btn btn-primary btn-sm mb-2" name="{{ isbn[book] }}" type="submit">Remove From Wishlist</button>
+                        </form>
+                    </td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
